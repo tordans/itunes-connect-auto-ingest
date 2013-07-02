@@ -49,9 +49,10 @@ function process($time)
 		$fp = fopen("$filename.gz", 'w');
 
 		//set the url, number of POST vars, POST data
+		curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch,CURLOPT_URL, 'https://reportingitc.apple.com/autoingestion.tft');
 		curl_setopt($ch,CURLOPT_POST, 7);
-		curl_setopt($ch,CURLOPT_POSTFIELDS,$fields_string);
+		curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
 
 		curl_setopt($ch, CURLOPT_FILE, $fp);
 		
